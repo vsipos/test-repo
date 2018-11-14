@@ -1,0 +1,350 @@
+body{
+	background: url(./images/background2.jpeg)
+}
+
+hr {
+	color: #F05F40;
+}
+
+.form-group{
+	color: royalblue;
+	margin-right: 150px;
+	margin-left: 150px;
+}
+
+.form-check{
+	color: royalblue;
+}
+
+.form-required{
+	color: red !important;
+}
+
+.nav {
+	color: white;
+	margin-right: 10px;
+}
+
+.form-group {
+	color: white;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+#submit-me {
+	background: #F05F40;
+	font-weight: bold;
+	font-weight: 700;
+	text-transform: uppercase;
+	border: none;
+	font-family: Arial, Helvetica, sans-serif;
+	display: inline-block;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: middle;
+	margin-left: 150px;
+}
+
+.header {
+	color: white;
+	text-align: center;
+	text-transform: uppercase;
+	font-weight: bold;
+	font-size: 2rem;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+p {
+	font-weight: 100;
+	font-weight: 0.5rem;
+	text-align: center;
+	color: lightgrey;
+	font-family: 'Courier New', Courier, monospace;
+}
+
+h2 {
+	color: #F05F40;
+}
+
+footer {
+	background: #F05F40;
+	margin-bottom: 0;
+	padding: 2px;
+	text-align: center;
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+}
+
+#weatherOut{
+	color: darkgrey;
+}
+
+#eventOut {
+	color: rgb(80, 80, 80);
+	background: rgb(187, 187, 187);
+	width: 100%;
+}
+
+@media only screen and (max-width: 980px) {
+    body {
+        background: url(./images/background2.jpeg)
+	}
+
+	hr {
+		color: #F05F40;
+	}
+	.form-group{
+		color: royalblue;
+		margin-right: 150px;
+		margin-left: 150px;
+	}
+	.form-check{
+		color: royalblue;
+	}
+	
+	.form-required{
+		color: red !important;
+	}
+	
+	.nav {
+		color: white;
+		margin-right: 10px;
+	}
+	
+	.form-group {
+		color: white;
+		font-family: Arial, Helvetica, sans-serif;
+	}
+	
+	#submit-me {
+		background: #F05F40;
+		font-weight: bold;
+		font-weight: 700;
+		text-transform: uppercase;
+		border: none;
+		font-family: Arial, Helvetica, sans-serif;
+		display: inline-block;
+		text-align: center;
+		white-space: nowrap;
+		vertical-align: middle;
+		margin-left: 150px;
+	}
+	
+	.header {
+		color: white;
+		text-align: center;
+		text-transform: uppercase;
+		font-weight: bold;
+		font-size: 2rem;
+		font-family: Arial, Helvetica, sans-serif;
+	}
+	
+	p {
+		font-weight: 100;
+		font-weight: 0.5rem;
+		text-align: center;
+		color: lightgrey;
+		font-family: 'Courier New', Courier, monospace;
+	}
+	
+	h2 {
+		color: #F05F40;
+	}
+	
+	footer {
+		background: #F05F40;
+		margin-bottom: 0;
+		padding: 2px;
+		text-align: center;
+		position: fixed;
+		left: 0;
+		bottom: 0;
+		width: 100%;
+	}
+	
+	#weatherOut{
+		color: darkgrey;
+	}
+	
+	#eventOut {
+		color: rgb(80, 80, 80);
+		background: rgb(187, 187, 187);
+		width: 100%;
+	}
+}
+
+@media only screen and (max-width: 768px) {
+    body {
+        background: url(./images/background2.jpeg)
+	}
+
+	hr {
+		color: #F05F40;
+	}
+	.form-group{
+		color: royalblue;
+		margin-right: 125px;
+		margin-left: 125px;
+	}
+	.form-check{
+		color: royalblue;
+	}
+	
+	.form-required{
+		color: red !important;
+	}
+	
+	.nav {
+		color: white;
+		margin-right: 5px;
+	}
+	
+	.form-group {
+		color: white;
+		font-family: Arial, Helvetica, sans-serif;
+	}
+	
+	#submit-me {
+		background: #F05F40;
+		font-weight: bold;
+		font-weight: 700;
+		text-transform: uppercase;
+		border: none;
+		font-family: Arial, Helvetica, sans-serif;
+		display: inline-block;
+		text-align: center;
+		white-space: nowrap;
+		vertical-align: middle;
+		margin-left: 125px;
+	}
+	
+	.header {
+		color: white;
+		text-align: center;
+		text-transform: uppercase;
+		font-weight: bold;
+		font-size: 2rem;
+		font-family: Arial, Helvetica, sans-serif;
+	}
+	
+	p {
+		font-weight: 100;
+		font-weight: 0.5rem;
+		text-align: center;
+		color: lightgrey;
+		font-family: 'Courier New', Courier, monospace;
+	}
+	
+	h2 {
+		color: #F05F40;
+	}
+	
+	footer {
+		background: #F05F40;
+		margin-bottom: 0;
+		text-align: center;
+		position: fixed;
+		left: 0;
+		bottom: 0;
+		width: 100%;
+	}
+	
+	#weatherOut{
+		color: darkgrey;
+	}
+	
+	#eventOut {
+		color: rgb(80, 80, 80);
+		background: rgb(187, 187, 187);
+		width: 100%;
+	}
+}
+
+@media only screen and (max-width: 640px) {
+    body {
+        background: url(./images/background2.jpeg)
+	}
+
+	hr {
+		color: #F05F40;
+	}
+	.form-group{
+		color: royalblue;
+		margin-right: 100px;
+		margin-left: 100px;
+	}
+	.form-check{
+		color: royalblue;
+	}
+	
+	.form-required{
+		color: red !important;
+	}
+	
+	.nav {
+		color: white;
+		margin-right: 1px;
+		text-align: right;
+	}
+	
+	.form-group {
+		color: white;
+		font-family: Arial, Helvetica, sans-serif;
+	}
+	
+	#submit-me {
+		background: #F05F40;
+		font-weight: bold;
+		font-weight: 700;
+		text-transform: uppercase;
+		border: none;
+		font-family: Arial, Helvetica, sans-serif;
+		display: inline-block;
+		text-align: center;
+		white-space: nowrap;
+		vertical-align: middle;
+		margin-left: 100px;
+	}
+	
+	.header {
+		color: white;
+		text-align: center;
+		text-transform: uppercase;
+		font-weight: bold;
+		font-size: 2rem;
+		font-family: Arial, Helvetica, sans-serif;
+	}
+	
+	p {
+		font-weight: 100;
+		font-weight: 0.5rem;
+		text-align: center;
+		color: lightgrey;
+		font-family: 'Courier New', Courier, monospace;
+	}
+	
+	h2 {
+		color: #F05F40;
+	}
+	
+	footer {
+		background: #F05F40;
+		margin-bottom: 0;
+		text-align: center;
+		position: fixed;
+		left: 0;
+		bottom: 0;
+		width: 100%;
+	}
+	
+	#weatherOut{
+		color: darkgrey;
+	}
+	
+	#eventOut {
+		color: rgb(80, 80, 80);
+		background: rgb(187, 187, 187);
+		width: 100%;
+	}
+}

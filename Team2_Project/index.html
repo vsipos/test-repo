@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Event Finder</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+
+<body>
+
+  <ul class="nav navbar-nav navbar-right">
+    <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li> <!--Planning on API (Facebook, Google...) Login. For weekly updates.-->
+    <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+  </ul>
+  </div>
+  </div>
+  </nav>
+  <br><br>
+  </div>
+
+
+  <div class="header"> <br>
+    <h1><strong>Event Finder</strong></h1>
+  </div>
+
+  <hr width="100%">
+
+  <p>Discover great events near you! From music festivals, to concerts, and art classes, <br> transform the way you live your weekends! Search events in your city below.</p>
+
+  <br>
+  <div class="container" id="userInput">
+    <form>
+      <div class="form-group">
+        <label for="key-word" id="interestSearch">What are you interested in?</label> <!--Following ID convention for all of the labels that we use.-->
+        <input type="text" id="key-word" class="form-control" placeholder="e.g Concerts, art, etc. for mulitple interests"> <!-- Mulitple search is supported (commas)-->
+      </div>
+      <div class="form-group">
+        <label for="address" id="citySearch">City Name</label> 
+        <input type="text" id="address" class="form-control" placeholder="City Name">
+      </div>
+      <div class="form-group">
+        <label for="start_date" id="fromDateSearch">Start Date</label> <!-- Weather is currently not connected to the dates. It will give the current 6 day forecast-->
+        <input type="date" id="start_date" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="end_date" id="toDateSearch">End Date</label>
+        <input type="date" id="end_date" class="form-control">
+      </div>
+    </form>
+
+    <button class="btn btn-primary" id="submit-me" type="button">Submit</button>
+    <br><br>
+  </div>
+
+
+  <div class="container">
+    <div class="row">
+      <div id="weatherOut"> <!-- ID is connected to the Weather API at the bottom -->
+
+      </div>
+    </div>
+
+    <div class="row">
+      <div id="eventOut" class="col-md-12"> <!-- Event Brite ID -->
+      </div>
+    </div>
+  </div>
+<br><br><br><br>
+  <footer>
+    <p>Event Finder
+      <br>
+      © All right Reversed. Blackrock Digital
+    </p>
+  </footer>
+
+
+
+  <script type="text/javascript">
+
+    //EventBrite API Key: "ABPZEKUFY437QD3XZHE7" 
+
+  var myArray = []; // 
+
+    $("#submit-me").on("click", function () { // The Submit Button Function
+      event.preventDefault();
+      $("#weatherOut").empty(); // Weather API
+      $("#eventOut").empty(); // Event Brite API
+
+
+  
+      var categoriesList = "categories=" + myArray; // Categories list making use of the search text to find the relevant events.
+
+      var searchTerm = $("#key-word").val().trim(); // Search from the text box
+      var urlTerm = "q=" + searchTerm;
+
+      var searchAddress = $("#address").val().trim(); // The City Search
+      var urlAddress = "location.address=" + searchAddress;
+
+      var searchStartDate = $("#start_date").val().trim(); // The Start Date Search
+      var urlStartDate = searchStartDate + "T01%3A00%3A00";
+
+      var searchEndDate = $("#end_date").val().trim(); // The End Date Search
+      var urlEndDate = searchEndDate + "T01%3A00%3A00";
+
+      if (searchAddress == null || searchAddress == "") { // Validation Points - If nothing is entered user is warned
+        $("#citySearch").addClass("form-required")
+        $("#citySearch").append(" This is a required field"); 
+      }
+      if (searchStartDate == null || searchStartDate == "") { // Validation Points - If nothing is entered user is warned
+        $("#fromDateSearch").addClass("form-required")
+        $("#fromDateSearch").append(" This is a required field");
+      }
+      if (searchEndDate == null || searchEndDate == "") { // Validation Points - If nothing is entered user is warned
+        $("#toDateSearch").addClass("form-required")
+        $("#toDateSearch").append(" This is a required field");
+      }
+
+// Event Brite API 
+      var myURL = "https://www.eventbriteapi.com/v3/events/search/?" + urlTerm + "&" + urlAddress +
+        "&" + categoriesList + "&location.within=20mi" + "&start_date.range_start=" + urlStartDate +
+        "&start_date.range_end=" + urlEndDate +
+        "&token=ABPZEKUFY437QD3XZHE7";
+
+      $.ajax({
+          url: myURL,
+          method: "GET"
+        })
+        .done(function (response) {
+          $("#eventOut").append("<h1>EventBrite Results: </h1>"); // JQuery to the HTML ID #eventOut
+          for (var k = 0; k < 10; k++) { // Limits the search to the top 10
+            var eventName = response.events[k].name.text; // Shows Event Name (on browser)
+            var eventStart = response.events[k].start.local; // Shows the start of the event (on browser)
+            var eventURL = response.events[k].url; // Shows the URL of the Event (on browser)
+
+            //----------HTML output for event API results ------
+            var eventSpace = $("<div>")
+            eventSpace.addClass('panel panel-default');
+
+            var eventURLActive = $("<a>");
+            eventURLActive.attr("href", eventURL);
+            eventURLActive.attr("target", "#");
+            eventURLActive.text("Click Link For Details!!");
+
+            var eventBtn = $("<div>");
+            eventBtn.addClass("well");
+            eventBtn.addClass("text-center");
+            eventBtn.append(eventURLActive);
+
+            eventSpace.html("<h1>" + eventName + "</h1>");
+            eventSpace.append("<h2>" + eventStart + "</h2>");
+            eventSpace.append(eventBtn);
+            $("#eventOut").append(eventSpace);
+            // ----- END HTML output for event API results -----
+          }
+
+
+        }) //END of done function for eventBrite API
+
+        // Weather API
+
+      var weatherAPIKey = "2bee70835b67699eaad26d5a938fcf32";
+
+      var weatherAPIURL = "http://api.openweathermap.org/data/2.5/forecast/daily?q=" + searchAddress + "&cnt=6" +  //cnt=6 limits the weather forecast to 6 days and searchAddress determines the location
+        "&appid=" + weatherAPIKey;
+
+      $.ajax({
+          url: weatherAPIURL,
+          method: "GET"
+        })
+        .done(function (snap) {
+          $("#weatherOut").append("<h1>6 Day Forecast: </h1>"); // #weatherout is the HTML ID
+          for (var i = 0; i < snap.list.length; i++) {
+            var weatherStart = snap.list[i]; // Dating the weather is future functionality, unable to do it at this point. (talking point)
+            var temp = weatherStart.temp.day;
+            var convertTemp = Math.round((1.8 * (temp - 273)) + 32); // Weather formula (currently farenheit)
+            var weatherIcon = "http://openweathermap.org/img/w/" + weatherStart.weather[0].icon + ".png"; // Pics of the weather from the website of that specific selection.
+
+            //-----HTML for Weather API Response ------
+            var weatherScreen = $("<div>");
+            weatherScreen.addClass("col-md-2");
+            weatherScreen.addClass("well");
+
+            var weatherPic = $("<img>");
+            weatherPic.addClass("img-responsive");
+            weatherPic.attr("src", weatherIcon);
+
+            weatherScreen.append(weatherPic);
+            weatherScreen.append("<h3>" + convertTemp + "&#8457;</h3>");
+
+            $("#weatherOut").append(weatherScreen);
+            //----END HTML for Weather API Response ----
+          } 
+        }) 
+
+    }) //End of Submit Button Push
+  </script>
+
+</body>
+
+</html>
